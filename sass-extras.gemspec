@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Sass::Extras::VERSION
   spec.authors       = ["Tobias Haagen Michaelsen"]
   spec.email         = ["tobias.michaelsen@gmail.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
+  spec.summary       = %q{A collection of SASS extensions.}
+  spec.description   = %q{A collection of SASS functions and helper methods.}
   spec.homepage      = "https://github.com/tobiashm/sass-extras"
   spec.license       = "MIT"
 
@@ -18,6 +18,11 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
+  spec.add_dependency "sass"
+  spec.add_dependency "chunky_png"
+  spec.add_dependency "rack"
+
   spec.add_development_dependency "bundler", "~> 1.5"
   spec.add_development_dependency "rake"
+  spec.add_development_dependency "minitest"
 end
