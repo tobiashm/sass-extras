@@ -1,5 +1,7 @@
 # Sass::Extras
 
+[![Build Status](https://travis-ci.org/tobiashm/sass-extras.png?branch=master)](https://travis-ci.org/tobiashm/sass-extras)
+
 A collection of miscellaneous SASS extensions. Mostly concerned with colour manipulation.
 
 ## Installation
