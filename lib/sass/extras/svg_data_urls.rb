@@ -3,10 +3,21 @@ require "rack"
 
 module Sass
   module Extras
-    module SvgGradients
+    module SvgDataUrls
       def self.included(base)
+        base.declare :circle_image_data_url, [:color, :radius]
         base.declare :linear_gradient_image_data_url, [:color, :height]
         base.declare :radial_gradient_image_data_url, [:color, :height]
+      end
+
+      def circle_image_data_url(color = Sass::Script::Color.new([0, 0, 0]), radius = Sass::Script::Number.new(10))
+        assert_type color, :Color
+        assert_type radius, :Number
+        svg_data_url(<<-SVG)
+          <svg xmlns="http://www.w3.org/2000/svg">
+            <circle cx="#{radius}" cy="#{radius}" r="#{radius}" fill="#{svg_color(color)}"/>
+          </svg>
+        SVG
       end
 
       def radial_gradient_image_data_url(color = Sass::Script::Color.new([0, 0, 0]), height = Sass::Script::Number.new(5))
