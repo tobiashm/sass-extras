@@ -4,6 +4,7 @@ require "sass/extras/contrast"
 require "sass/extras/inline_color_image"
 require "sass/extras/svg_data_urls"
 require "sass/extras/yuv"
+require "sass/script"
 
 module Sass
   module Script
