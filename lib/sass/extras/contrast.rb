@@ -28,7 +28,8 @@ module Sass
         def luminance
           # http://www.w3.org/TR/WCAG20/#relativeluminancedef
           norm_rgb = rgb.map { |value| value.to_f / 255 }
-          Utils.sum(Utils.mul(norm_rgb.map { |v| v <= 0.03928 ? v/12.92 : ((v+0.055)/1.055) ** 2.4 }, LUMINANCE_COEFS))
+          relative_luminance = norm_rgb.map { |v| v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055)**2.4 }
+          Utils.sum(Utils.mul(relative_luminance, LUMINANCE_COEFS))
         end
       end
 
@@ -47,9 +48,9 @@ module Sass
           direction = color.brightness > 127 ? darken_method : lighten_method
           new_color = seed_color
           percentage = 0.0
-          until conform(new_color, color, wcag20_level.value) or percentage > 100.0 do
+          until conform(new_color, color, wcag20_level.value) || percentage > 100.0
             amount = Sass::Script::Number.new percentage, ['%']
-            new_color = self.send direction, seed_color, amount
+            new_color = send(direction, seed_color, amount)
             percentage += 0.1
           end
           new_color
@@ -123,7 +124,7 @@ module Sass
         end
 
         def self.sq(array)
-          array.map { |e| e ** 2 }
+          array.map { |e| e**2 }
         end
       end
     end
