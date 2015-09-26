@@ -44,17 +44,17 @@ a {
 
 a {
   color: contrast-color(red);
-  background: #ffaeb2;
+  background: #ffaeb3;
   }
 
 a {
   color: contrast-color(green);
-  background: #b3ffb3;
+  background: #b4ffb4;
   }
 
 a {
   color: contrast-color(blue);
-  background: #e1eeff;
+  background: #e2efff;
   }
 
 a {

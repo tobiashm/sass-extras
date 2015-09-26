@@ -47,7 +47,7 @@ describe Sass::Extras::YUV::Color do
     it "can define color" do
       (<<CSS).must_equal render(<<SASS)
 a {
-  b: #191919; }
+  b: #1a1a1a; }
 CSS
 a {
   b: yuv(10%, 0, 0); }
@@ -57,20 +57,20 @@ SASS
     it "converts nicely" do
       (<<CSS).must_equal render(<<SASS)
 a {
-  b: #191919; }
+  b: #1a1a1a; }
 CSS
 a {
-  b: set_brightness(#FFFFFF, 10%); }
+  b: set-brightness(#ffffff, 10%); }
 SASS
     end
 
     it "reduces brightness" do
       (<<CSS).must_equal render(<<SASS)
 a {
-  b: #e5e5e5; }
+  b: #e6e6e6; }
 CSS
 a {
-  b: reduce_brightness(#FFFFFF, 10%); }
+  b: reduce-brightness(#ffffff, 10%); }
 SASS
     end
   end
