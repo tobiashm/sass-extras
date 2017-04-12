@@ -7,12 +7,6 @@ describe Sass::Extras::YUV::Color do
 
   describe "a beginning" do
     it "should just be numbers" do
-      @color.rgb.each do |c|
-        c.class.must_equal Integer
-      end
-      @color.hue do |c|
-        c.class.must_equal Integer
-      end
       @color.yuv.each do |c|
         c.class.must_equal Float
       end
