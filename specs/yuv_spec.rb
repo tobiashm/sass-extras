@@ -8,10 +8,10 @@ describe Sass::Extras::YUV::Color do
   describe "a beginning" do
     it "should just be numbers" do
       @color.rgb.each do |c|
-        c.class.must_equal Fixnum
+        c.class.must_equal Integer
       end
       @color.hue do |c|
-        c.class.must_equal Fixnum
+        c.class.must_equal Integer
       end
       @color.yuv.each do |c|
         c.class.must_equal Float
@@ -45,7 +45,7 @@ describe Sass::Extras::YUV::Color do
 
   describe "usage in render" do
     it "can define color" do
-      (<<CSS).must_equal render(<<SASS)
+      <<CSS.must_equal render(<<SASS)
 a {
   b: #1a1a1a; }
 CSS
@@ -55,7 +55,7 @@ SASS
     end
 
     it "converts nicely" do
-      (<<CSS).must_equal render(<<SASS)
+      <<CSS.must_equal render(<<SASS)
 a {
   b: #1a1a1a; }
 CSS
@@ -65,7 +65,7 @@ SASS
     end
 
     it "reduces brightness" do
-      (<<CSS).must_equal render(<<SASS)
+      <<CSS.must_equal render(<<SASS)
 a {
   b: #e6e6e6; }
 CSS

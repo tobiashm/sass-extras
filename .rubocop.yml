@@ -1,0 +1,7 @@
+inherit_from: .rubocop_todo.yml
+
+Style/SignalException:
+  EnforcedStyle: semantic
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes

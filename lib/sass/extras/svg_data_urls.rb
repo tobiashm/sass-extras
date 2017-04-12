@@ -36,7 +36,7 @@ module Sass
         SVG
       end
 
-      def linear_gradient_image_data_url(color = Sass::Script::Color.new([255, 255, 255]), height = Sass::Script::Number.new(100, ['%']))
+      def linear_gradient_image_data_url(color = Sass::Script::Color.new([255, 255, 255]), height = Sass::Script::Number.new(100, ["%"]))
         assert_type color, :Color
         assert_type height, :Number
         svg_data_url(<<-SVG)

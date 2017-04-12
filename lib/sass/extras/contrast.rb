@@ -1,8 +1,8 @@
 module Sass
   module Extras
     module Contrast
-      BRIGHTNESS_COEFS = [0.299, 0.587, 0.114]
-      LUMINANCE_COEFS = [0.2126, 0.7152, 0.0722]
+      BRIGHTNESS_COEFS = [0.299, 0.587, 0.114].freeze
+      LUMINANCE_COEFS = [0.2126, 0.7152, 0.0722].freeze
 
       module Color
         def diff(other)
@@ -49,7 +49,7 @@ module Sass
           new_color = seed_color
           percentage = 0.0
           until conform(new_color, color, wcag20_level.value) || percentage > 100.0
-            amount = Sass::Script::Number.new percentage, ['%']
+            amount = Sass::Script::Number.new percentage, ["%"]
             new_color = send(direction, seed_color, amount)
             percentage += 0.1
           end
@@ -94,7 +94,8 @@ module Sass
         def contrast_ratio(color1, color2)
           assert_type color1, :Color
           assert_type color2, :Color
-          l1, l2 = color1.luminance, color2.luminance
+          l1 = color1.luminance
+          l2 = color2.luminance
           l2, l1 = l1, l2 if l2 > l1
           (l1 + 0.05) / (l2 + 0.05)
         end
@@ -120,7 +121,7 @@ module Sass
         end
 
         def self.sum(array)
-          array.inject(0) { |sum, value| sum + value.to_f }
+          array.reduce(0) { |acc, elem| acc + elem.to_f }
         end
 
         def self.sq(array)

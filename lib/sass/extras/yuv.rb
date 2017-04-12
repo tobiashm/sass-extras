@@ -50,15 +50,15 @@ module Sass
 
           yv = y.value
           if y.numerator_units == ["%"] && y.denominator_units.empty?
-            fail ArgumentError, "Brightness (Y') value #{y} must be between 0% and 100% inclusive" unless (0..100).include?(y.value)
+            fail ArgumentError, "Brightness (Y') value #{y} must be between 0% and 100% inclusive" unless (0..100).cover?(y.value)
             yv /= 100.0
           else
-            fail ArgumentError, "Brightness (Y') value #{y} must be between 0 and 1.0 inclusive" unless (0..1.0).include?(y.value)
+            fail ArgumentError, "Brightness (Y') value #{y} must be between 0 and 1.0 inclusive" unless (0..1.0).cover?(y.value)
           end
-          fail ArgumentError, "Chrominance (U) value #{u} must be between -#{U_MAX} and #{U_MAX} inclusive" unless (-U_MAX..U_MAX).include?(u.value)
-          fail ArgumentError, "Chrominance (V) value #{v} must be between -#{V_MAX} and #{V_MAX} inclusive" unless (-V_MAX..V_MAX).include?(v.value)
+          fail ArgumentError, "Chrominance (U) value #{u} must be between -#{U_MAX} and #{U_MAX} inclusive" unless (-U_MAX..U_MAX).cover?(u.value)
+          fail ArgumentError, "Chrominance (V) value #{v} must be between -#{V_MAX} and #{V_MAX} inclusive" unless (-V_MAX..V_MAX).cover?(v.value)
 
-          r = yv + v.value * (1 - WR) / (V_MAX)
+          r = yv + v.value * (1 - WR) / V_MAX
           g = yv - u.value * (WB * (1 - WB)) / (V_MAX * WG) - v.value * (WR * (1 - WR)) / (V_MAX * WG)
           b = yv + u.value * (1 - WB) / U_MAX
 
@@ -107,10 +107,10 @@ module Sass
           y, u, v, a = color.yuva.map { |x| Sass::Script::Number.new x }
           c = amount.value
           if amount.numerator_units == ["%"] && amount.denominator_units.empty?
-            fail ArgumentError, "Amount value #{amount} must be between 0% and 100% inclusive" unless (0..100).include?(c)
+            fail ArgumentError, "Amount value #{amount} must be between 0% and 100% inclusive" unless (0..100).cover?(c)
             c /= 100.0
           else
-            fail ArgumentError, "Amount value #{amount} must be between 0 and 1.0 inclusive" unless (0..1.0).include?(c)
+            fail ArgumentError, "Amount value #{amount} must be between 0 and 1.0 inclusive" unless (0..1.0).cover?(c)
           end
           y = Sass::Script::Number.new yield(c, y.value)
           yuva(y, u, v, a)

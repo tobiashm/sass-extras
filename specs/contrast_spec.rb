@@ -5,13 +5,13 @@ describe Sass::Extras::Contrast do
     white = Sass::Script::Color.new [255, 255, 255]
     white.brightness.must_be_within_delta 255.0
     grey = Sass::Script::Color.new [0xe5, 0xe5, 0xe5]
-    grey.brightness.must_be_within_delta 0.9*255, 1.0
+    grey.brightness.must_be_within_delta 0.9 * 255, 1.0
   end
 
   it "should generate colors with enough contrast" do
     data = File.read(__FILE__).split("__END__").last
-    css = Sass::Engine.new(data, :syntax => :scss).to_css
-    rules = css.gsub(/\s+/, ' ').gsub(/\} a/, '}\na').split('\n')
+    css = Sass::Engine.new(data, syntax: :scss).to_css
+    rules = css.gsub(/\s+/, " ").gsub(/\} a/, '}\na').split('\n')
     rules.each { |rule| rule.must_match(/a \{ color: (#?\w+); background: \1; \}/) }
   end
 end
