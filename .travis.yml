@@ -1,8 +1,11 @@
 language: ruby
+dist: trusty
+sudo: required
+before_install:
+  - gem install bundler
 rvm:
   - "2.2"
-  - "2.1"
-  - 2.0.0
-  - 1.9.3
-  - jruby-19mode
-  - rbx
+  - "2.3"
+  - "2.4"
+  - jruby
+  - rubinius-3
