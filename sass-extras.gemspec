@@ -20,7 +20,6 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "sass"
   spec.add_dependency "chunky_png"
-  spec.add_dependency "rack"
 
   spec.add_development_dependency "bundler", "~> 1.5"
   spec.add_development_dependency "rake"
