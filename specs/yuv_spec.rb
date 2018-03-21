@@ -39,37 +39,33 @@ describe Sass::Extras::YUV::Color do
 
   describe "usage in render" do
     it "can define color" do
-      <<CSS.must_equal render(<<SASS)
-a {
-  b: #1a1a1a; }
-CSS
-a {
-  b: yuv(10%, 0, 0); }
-SASS
+      render(unindent(<<-SCSS)).must_equal unindent(<<-CSS)
+        a {
+          b: yuv(10%, 0, 0); }
+      SCSS
+        a {
+          b: #1a1a1a; }
+      CSS
     end
 
     it "converts nicely" do
-      <<CSS.must_equal render(<<SASS)
-a {
-  b: #1a1a1a; }
-CSS
-a {
-  b: set-brightness(#ffffff, 10%); }
-SASS
+      render(unindent(<<-SCSS)).must_equal unindent(<<-CSS)
+        a {
+          b: set-brightness(#ffffff, 10%); }
+      SCSS
+        a {
+          b: #1a1a1a; }
+      CSS
     end
 
     it "reduces brightness" do
-      <<CSS.must_equal render(<<SASS)
-a {
-  b: #e6e6e6; }
-CSS
-a {
-  b: reduce-brightness(#ffffff, 10%); }
-SASS
+      render(unindent(<<-SCSS)).must_equal unindent(<<-CSS)
+        a {
+          b: reduce-brightness(#ffffff, 10%); }
+      SCSS
+        a {
+          b: #e6e6e6; }
+      CSS
     end
-  end
-
-  def render(sass)
-    Sass::Engine.new(sass, syntax: :scss).render
   end
 end
