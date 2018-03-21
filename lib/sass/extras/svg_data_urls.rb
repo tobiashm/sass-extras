@@ -1,6 +1,3 @@
-require "base64"
-require "rack"
-
 module Sass
   module Extras
     module SvgDataUrls
@@ -59,8 +56,8 @@ module Sass
       end
 
       def svg_data_url(svg)
-        base64 = Base64.encode64(svg).gsub(/\s+/, "")
-        Sass::Script::String.new("url(data:image/svg+xml;base64,#{Rack::Utils.escape(base64)})")
+        compacted = svg.gsub(/>\s+/, ">").gsub(/\s+</, "<").strip
+        Sass::Script::String.new("url('data:image/svg+xml;utf8,#{compacted}')")
       end
     end
   end
