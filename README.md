@@ -26,7 +26,7 @@ Notice: All examples are in SCSS syntax.
 
 ### Contrast Color
 
-Will adjust a colour so that it conforms to the [WAI](http://www.w3.org/WAI/ER/WD-AERT/#color-contrast) and [WCAG20](http://www.w3.org/TR/WCAG20/#visual-audio-contrast-contrast) recommendations for minimum contrast for text.
+Will adjust a colour so that it conforms to the [WAI](http://www.w3.org/WAI/ER/WD-AERT/#color-contrast) and [WCAG 2.0](http://www.w3.org/TR/WCAG20/#visual-audio-contrast-contrast) & [2.1](https://www.w3.org/TR/WCAG21/#contrast-minimum) recommendations for minimum contrast for text.
 
 ```SCSS
 span {
